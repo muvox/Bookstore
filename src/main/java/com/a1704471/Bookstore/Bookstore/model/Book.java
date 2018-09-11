@@ -1,9 +1,6 @@
 package com.a1704471.Bookstore.Bookstore.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Book {
@@ -12,13 +9,16 @@ public class Book {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
+    @Version
+    private Long version;
+
     String title;
     String author;
     int year;
     String isbn;
     double price;
 
-    protected Book(){}
+    public Book(){}
 
     public Book(String title, String author, int year, String isbn, double price) {
         super();
@@ -29,6 +29,13 @@ public class Book {
         this.price = price;
     }
 
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
 
     public Long getId() {
         return id;
