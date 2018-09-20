@@ -1,4 +1,4 @@
-package com.a1704471.Bookstore.Bookstore;
+package com.a1704471.Bookstore.Bookstore.domain;
 
 import com.a1704471.Bookstore.Bookstore.model.Book;
 import org.springframework.data.repository.CrudRepository;

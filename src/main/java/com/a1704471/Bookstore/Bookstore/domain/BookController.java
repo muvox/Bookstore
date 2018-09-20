@@ -1,6 +1,5 @@
-package com.a1704471.Bookstore.Bookstore.control;
+package com.a1704471.Bookstore.Bookstore.domain;
 
-import com.a1704471.Bookstore.Bookstore.BookRepository;
 import com.a1704471.Bookstore.Bookstore.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
     @Autowired
     private BookRepository repo;
+
+    @Autowired
+    private CategoryRepository catrepo;
 
     public Book findBook(long id){
         return repo.findById(id).get();
@@ -25,6 +27,7 @@ public class BookController {
     @RequestMapping(value= "/add")
     public String addBook(Model model){
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", catrepo.findAll());
         return "addbook";
     }
 
@@ -44,6 +47,8 @@ public class BookController {
     public String editBook(@PathVariable("id") Long bookId, Model model){
        Book book = findBook(bookId);
        model.addAttribute("book", book);
+       model.addAttribute("categories", catrepo.findAll());
+
        return "editBook";
     }
 

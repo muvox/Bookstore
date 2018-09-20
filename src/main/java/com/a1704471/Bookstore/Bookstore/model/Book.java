@@ -1,5 +1,7 @@
 package com.a1704471.Bookstore.Bookstore.model;
 
+import com.a1704471.Bookstore.Bookstore.domain.Category;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,15 +20,20 @@ public class Book {
     String isbn;
     double price;
 
+    @ManyToOne
+    @JoinColumn(name = "categoryid")
+    private Category category;
+
     public Book(){}
 
-    public Book(String title, String author, int year, String isbn, double price) {
+    public Book(String title, String author, int year, String isbn, double price, Category category) {
         super();
         this.title = title;
         this.author = author;
         this.year = year;
         this. isbn = isbn;
         this.price = price;
+        this.category = category;
     }
 
     public Long getVersion() {
@@ -83,6 +90,14 @@ public class Book {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override
