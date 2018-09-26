@@ -26,7 +26,7 @@ public class BookstoreApplication {
 	    return (args) -> {
 	        log.info("Inserting couple books");
 
-	        /**
+	        /*
              * title, autho, year, isbn, price
              * string,string,int,string,double
              */
