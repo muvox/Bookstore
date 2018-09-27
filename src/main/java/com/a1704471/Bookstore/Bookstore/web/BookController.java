@@ -1,7 +1,10 @@
-package com.a1704471.Bookstore.Bookstore.domain;
+package com.a1704471.Bookstore.Bookstore.web;
 
+import com.a1704471.Bookstore.Bookstore.domain.BookRepository;
+import com.a1704471.Bookstore.Bookstore.domain.CategoryRepository;
 import com.a1704471.Bookstore.Bookstore.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +46,7 @@ public class BookController {
         return "redirect:../booklist";
     }
 
+
     @RequestMapping(value ="/edit/{id}", method = RequestMethod.GET)
     public String editBook(@PathVariable("id") Long bookId, Model model){
        Book book = findBook(bookId);
@@ -52,7 +56,7 @@ public class BookController {
        return "editBook";
     }
 
-    @RequestMapping(value="/login")
+    @RequestMapping(value="/login" ,method = RequestMethod.GET)
     public String login(){
         return "login";
     }
