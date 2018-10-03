@@ -56,7 +56,7 @@ public class BookController {
        return "editBook";
     }
 
-    @RequestMapping(value="/login" ,method = RequestMethod.GET)
+    @RequestMapping(value="/login")
     public String login(){
         return "login";
     }
